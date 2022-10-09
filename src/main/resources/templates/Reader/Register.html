@@ -7,43 +7,59 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<div align="center">
-  <h1>Registration</h1>
-  <div>
-    <form th:action="@{/process_register}" method="post" th:object="${reader}" style="max-width: 600px; margin: 0 auto">
-      <div class="text-center m-3">
-
-        <div class="form-group row">
-          <label class="col-form-label col-4">ID</label>
-          <div class="col-8">
-            <input  type="text" class="form-control" th:field="*{idReader}" value="" required disabled>
-<!--            <p> Your id is: th:field=""</p>-->
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-form-label col-4">Email</label>
-          <div class="col-8">
-            <input  type="email" class="form-control" th:field="*{email}" required
-              minlength="6" maxlength="50">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-form-label col-4">Password</label>
-          <div class="col-8">
-            <input  type="password" class="form-control" th:field="*{password}" required
-              minlength="6" maxlength="30">
-          </div>
-        </div>
-
-        <div>
-          <button type="submit" class="btn btn-primary">Sign up</button>
-        </div>
-
+<div class="container-register">
+  <div class="register-title">Registration</div>
+  <form th:action="@{/process_register}" method="post" th:object="${reader}">
+    <div class="user-detail">
+      <div class="inputBx">
+        <span class="details">Full Name</span>
+        <input type="text" th:field="*{nameReader}" placeholder="Enter your full name" required>
       </div>
-    </form>
-  </div>
+      <div class="inputBx">
+        <select th:field="*{typeOfReader}">
+          <option value="">--</option>
+          <option th:each="Type : ${listType}"
+          th:value="${Type.idType}"
+          th:utext="${Type.name}"/>
+        </select>
+      </div>
+    </div>
+  </form>
+<!--  <div>-->
+<!--    <form th:action="@{/process_register}" method="post" th:object="${reader}" style="max-width: 600px; margin: 0 auto">-->
+<!--      <div class="text-center m-3">-->
+
+<!--        <div class="form-group row">-->
+<!--          <label class="col-form-label col-4">ID</label>-->
+<!--          <div class="col-8">-->
+<!--            <input  type="text" class="form-control" th:field="*{idReader}" value="" required disabled>-->
+<!--&lt;!&ndash;            <p> Your id is: th:field=""</p>&ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="form-group row">-->
+<!--          <label class="col-form-label col-4">Email</label>-->
+<!--          <div class="col-8">-->
+<!--            <input  type="email" class="form-control" th:field="*{email}" required-->
+<!--              minlength="6" maxlength="50">-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="form-group row">-->
+<!--          <label class="col-form-label col-4">Password</label>-->
+<!--          <div class="col-8">-->
+<!--            <input  type="password" class="form-control" th:field="*{password}" required-->
+<!--              minlength="6" maxlength="30">-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div>-->
+<!--          <button type="submit" class="btn btn-primary">Sign up</button>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
 </div>
 
 </body>

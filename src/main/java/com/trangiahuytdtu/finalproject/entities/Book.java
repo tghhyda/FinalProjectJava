@@ -31,16 +31,28 @@ public class Book {
     @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY)
     private Set<Loan> loans = new HashSet<>();
 
+    @Column(name="img")
+    private String img;
     public Book() {
     }
 
-    public Book(String idBook, String nameBook, String author, Producer producer, TypeOfBook typeOfBook, int initialPrice) {
+    public Book(String idBook, String nameBook, String author, Producer producer, TypeOfBook typeOfBook, int initialPrice, Set<Loan> loans, String img) {
         this.idBook = idBook;
         this.nameBook = nameBook;
         this.author = author;
         this.producer = producer;
         this.typeOfBook = typeOfBook;
         this.initialPrice = initialPrice;
+        this.loans = loans;
+        this.img = img;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getIdBook() {

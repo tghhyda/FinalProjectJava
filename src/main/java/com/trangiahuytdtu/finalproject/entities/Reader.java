@@ -1,6 +1,7 @@
 package com.trangiahuytdtu.finalproject.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="Reader")
@@ -31,10 +32,19 @@ public class Reader {
     @Column(name="address", length = 100)
     private String address;
 
+    @Column(name="img")
+    private String img;
+
+    @Column(name="gender")
+    private String gender;
+
+    @Column(name="birthday")
+    private Date birthday;
+
     public Reader() {
     }
 
-    public Reader(String idReader, TypeOfReader typeOfReader, String nameReader, String email, String password, Role role, String phone, String address) {
+    public Reader(String idReader, TypeOfReader typeOfReader, String nameReader, String email, String password, Role role, String phone, String address, String img, String gender, Date birthday) {
         this.idReader = idReader;
         this.typeOfReader = typeOfReader;
         this.nameReader = nameReader;
@@ -43,6 +53,33 @@ public class Reader {
         this.role = role;
         this.phone = phone;
         this.address = address;
+        this.img = img;
+        this.gender = gender;
+        this.birthday = birthday;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getIdReader() {

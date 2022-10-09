@@ -10,6 +10,9 @@
   <div align="center">
     <h1>Login as Admin</h1>
     <div>
+      <div th:if="${param.error}">
+        <h4 style="color: red">Invalid Account</h4>
+      </div>
       <form th:action="@{/admin/login}" method="post">
         <table>
           <tr>
