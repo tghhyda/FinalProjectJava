@@ -9,3 +9,4 @@ show_login_selector.addEventListener("click", function () {
 close_button_selector.addEventListener("click", function () {
    popup_selector.classList.remove("active");
 });
+

@@ -13,8 +13,151 @@
 	display: flex;
 }
 
+.section-register{
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
 
+.container-register{
+	max-width: 700px;
+	width: 100%;
+	background: #fff;
+	padding: 25px 30px;
+	border-radius: 5px;
 
+}
+
+.container-register .register-title{
+	font-size: 25px;
+	margin-bottom: 10px;
+	font-weight: 500;
+	position: relative;
+}
+
+.container-register .register-title::before{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 25px;
+	height: 3px;
+	width: 30px;
+	background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container-register form .user-detail{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 20px 0 12px 0;
+}
+
+.container-register form .user-detail .inputBx{
+	width: calc(100% / 2 - 20px);
+	margin-bottom: 15px;
+}
+
+.container-register form .user-detail .inputBx .details{
+	font-weight: 500;
+	margin-bottom: 5px;
+	display: block;
+	font-size: 17px;
+}
+
+.container-register form .user-detail .inputBx input{
+	height: 45px;
+	width: 100%;
+	outline: none;
+	border-radius: 5px;
+	font-size: 15px;
+	border: 1px solid #ccc;
+	padding-left: 15px;
+	border-bottom-width: 2px;
+}
+
+.container-register form .user-detail .inputBx input:focus,
+.container-register form .user-detail .inputBx input:valid{
+	border-color: #9b59b6;
+}
+
+.container-register form .user-detail .inputBx select{
+	height: 45px;
+	width: 100%;
+	outline: none;
+	border-radius: 5px;
+	font-size: 15px;
+	padding-left: 15px;
+	border: 1px solid #ccc;
+	border-bottom-width: 2px;
+	transition: all 0.3s ease;
+}
+
+.container-register form .user-detail .inputBx select:valid{
+	border-color: #9b59b6;
+}
+
+.container-register form .gender-detail .gender-title{
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.container-register form .gender-detail .category{
+	display: flex;
+	width: 80%;
+	justify-content: space-between;
+	margin: 14px 0;
+}
+
+.container-register form .gender-detail .category label{
+	display: flex;
+	align-items: center;
+}
+
+.container-register form .gender-detail .category .dot{
+	height: 18px;
+	width: 18px;
+	background: #d9d9d9;
+	border-radius: 50%;
+	margin-right: 10px;
+	border: 5px solid transparent;
+}
+
+.container-register form .gender-detail .category .gender{
+	font-size: 15px;
+}
+
+#dot-1:checked ~ .category label .one,
+#dot-2:checked ~ .category label .two,
+#dot-3:checked ~ .category label .three{
+	border-color: #d9d9d9;
+	background: #9b59b6	;
+}
+
+.container-register form input[type=radio]{
+	display: none;
+}
+.container-register form .user-detail .inputBx select option{
+	font-size: 15px;
+}
+
+.container-register form .button input{
+	height: 100%;
+	width: 100%;
+	outline: none;
+	color: #fff;
+	background: linear-gradient(135deg, #71b7e6, #9b59b6);
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	padding: 10px;
+}
+.container-register form .button input:hover{
+	background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
 .section-login .imgBx{
 	position: relative;
 	width: 50%;
@@ -180,6 +323,27 @@
 		text-align: center;
 		margin: 30px 0 10px;
 		font-weight: 500;
+	}
+
+	.container-register{
+		max-width: 100%;
+	}
+
+	.container-register form .user-detail .inputBx{
+		width: 100%;
+		margin-bottom: 15px;
+	}
+
+	.container-register form .gender-detail .category {
+		width: 100%;
+	}
+
+	.container-register form .user-detail{
+		max-height: 300px;
+		overflow-y: scroll;
+	}
+	.container-register form .user-detail::-webkit-scrollbar{
+		width: 0;
 	}
 }
 .container-homepage {

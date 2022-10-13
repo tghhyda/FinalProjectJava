@@ -3,64 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <title>Library HomePage</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="../js/register.js"></script>
 </head>
 <body>
-<div class="container-register">
-  <div class="register-title">Registration</div>
-  <form th:action="@{/process_register}" method="post" th:object="${reader}">
-    <div class="user-detail">
-      <div class="inputBx">
-        <span class="details">Full Name</span>
-        <input type="text" th:field="*{nameReader}" placeholder="Enter your full name" required>
+<div class="section-register">
+  <div class="container-register">
+    <div class="register-title">Registration</div>
+    <form class="register_form" th:action="@{/process_register}" method="post" th:object="${reader}">
+      <div class="user-detail">
+        <div class="inputBx">
+          <span class="details">Full Name</span>
+          <input type="text" th:field="*{nameReader}" placeholder="Enter your full name" required>
+        </div>
+        <div class="inputBx">
+          <span class="details">Type of Reader</span>
+          <select th:field="*{typeOfReader}">
+            <option value="">--</option>
+            <option th:each="Type : ${listType}"
+                    th:value="${Type.idType}"
+                    th:utext="${Type.name}"/>
+          </select>
+        </div>
+        <div class="inputBx">
+          <span class="details">Phone</span>
+          <input type="text" th:field="*{phone}" placeholder="Enter your phone number" required>
+        </div>
+        <div class="inputBx">
+          <span class="details">Address</span>
+          <input type="text" name="address" th:field="*{address}" placeholder="Enter your address" required>
+        </div>
+        <div class="inputBx">
+          <span class="details">Birth Day</span>
+          <input type="date" name="birthday" th:field="*{birthday}" placeholder="Enter your birth day" required>
+        </div>
+        <div class="inputBx">
+          <span class="details">Email</span>
+          <input type="email" name="email" th:field="*{email}" placeholder="Enter your email" required>
+        </div>
+        <div class="inputBx">
+          <span class="details">Password</span>
+          <input class="password" name="password" type="password" th:field="*{password}" placeholder="Enter your password" required>
+        </div>
+        <div class="inputBx">
+          <span class="details">Confirm Password</span>
+          <input class="confirm_password" name="confirm_password" type="password" placeholder="Confirm your password" required>
+        </div>
       </div>
-      <div class="inputBx">
-        <select th:field="*{typeOfReader}">
-          <option value="">--</option>
-          <option th:each="Type : ${listType}"
-          th:value="${Type.idType}"
-          th:utext="${Type.name}"/>
-        </select>
+      <div class="gender-detail">
+        <input type="radio" name="gender" id="dot-1" value="Male" th:field="*{gender}">
+        <input type="radio" name="gender" id="dot-2" value="Female" th:field="*{gender}">
+        <input type="radio" name="gender" id="dot-3" value="Others" th:field="*{gender}">
+        <span class="gender-title">Gender</span>
+        <div class="category">
+          <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Orthers</span>
+          </label>
+        </div>
       </div>
-    </div>
-  </form>
-<!--  <div>-->
-<!--    <form th:action="@{/process_register}" method="post" th:object="${reader}" style="max-width: 600px; margin: 0 auto">-->
-<!--      <div class="text-center m-3">-->
-
-<!--        <div class="form-group row">-->
-<!--          <label class="col-form-label col-4">ID</label>-->
-<!--          <div class="col-8">-->
-<!--            <input  type="text" class="form-control" th:field="*{idReader}" value="" required disabled>-->
-<!--&lt;!&ndash;            <p> Your id is: th:field=""</p>&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="form-group row">-->
-<!--          <label class="col-form-label col-4">Email</label>-->
-<!--          <div class="col-8">-->
-<!--            <input  type="email" class="form-control" th:field="*{email}" required-->
-<!--              minlength="6" maxlength="50">-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="form-group row">-->
-<!--          <label class="col-form-label col-4">Password</label>-->
-<!--          <div class="col-8">-->
-<!--            <input  type="password" class="form-control" th:field="*{password}" required-->
-<!--              minlength="6" maxlength="30">-->
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div>-->
-<!--          <button type="submit" class="btn btn-primary">Sign up</button>-->
-<!--        </div>-->
-
-<!--      </div>-->
-<!--    </form>-->
-<!--  </div>-->
+      <div class="button">
+        <input type="submit" class="button-submit-register"  value="Register">
+      </div>
+    </form>
+  </div>
 </div>
-
 </body>
 </html>

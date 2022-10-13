@@ -39,12 +39,12 @@ public class Reader {
     private String gender;
 
     @Column(name="birthday")
-    private Date birthday;
+    private String birthday;
 
     public Reader() {
     }
 
-    public Reader(String idReader, TypeOfReader typeOfReader, String nameReader, String email, String password, Role role, String phone, String address, String img, String gender, Date birthday) {
+    public Reader(String idReader, TypeOfReader typeOfReader, String nameReader, String email, String password, Role role, String phone, String address, String img, String gender, String birthday) {
         this.idReader = idReader;
         this.typeOfReader = typeOfReader;
         this.nameReader = nameReader;
@@ -66,11 +66,11 @@ public class Reader {
         this.gender = gender;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

@@ -55,20 +55,20 @@ public class DatabaseLoader {
             Reader reader1 = new Reader("Reader1"+currentTime, typeOfReader1, "Tran Gia Huy",
                                         "trangiahuy.hyda@gmail.com", encodePassword("giahuy"), Role.READER,
                                         "0793557129","TDTU Dorminatory", "../images/book2.jpg",
-                                        "male", new Date());
+                                        "male", "28/08/2001");
             Reader reader2 = new Reader("Reader2"+currentTime, typeOfReader1, "Reader",
                                         "reader@gmail.com", encodePassword("reader"), Role.READER,
                                         "0793557128","TDTU Dorminatory", "../images/book2.jpg",
-                                        "female", new Date());
+                                        "female", "28/08/2001");
 
             Reader reader3 = new Reader("Reader3"+currentTime, typeOfReader2, "Nguyen Thanh Phong",
                                         "nguyenthanhphong@gmail.com", encodePassword("thanhphong"), Role.ADMIN,
                                         "0320333112","Somewhere", "../images/book2.jpg",
-                                        "male", new Date());
+                                        "male", "28/08/2001");
             Reader reader4 = new Reader("Reader4"+currentTime, typeOfReader2, "Admin",
                                         "admin@gmail.com", encodePassword("admin"), Role.ADMIN,
                                         "0327393512","Somewhere", "../images/book2.jpg",
-                                        "male", new Date());
+                                        "male", "28/08/2001");
 
             // Kiểm tra xem đã tồn tại chưa
             for(Reader reader : List.of(reader1, reader2, reader3,reader4)){
