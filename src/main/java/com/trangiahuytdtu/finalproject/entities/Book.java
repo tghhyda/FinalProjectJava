@@ -33,10 +33,14 @@ public class Book {
 
     @Column(name="img")
     private String img;
+
+    @Column(name="remain")
+    private int remain;
+
     public Book() {
     }
 
-    public Book(String idBook, String nameBook, String author, Producer producer, TypeOfBook typeOfBook, int initialPrice, Set<Loan> loans, String img) {
+    public Book(String idBook, String nameBook, String author, Producer producer, TypeOfBook typeOfBook, int initialPrice, Set<Loan> loans, String img, int remain) {
         this.idBook = idBook;
         this.nameBook = nameBook;
         this.author = author;
@@ -45,6 +49,16 @@ public class Book {
         this.initialPrice = initialPrice;
         this.loans = loans;
         this.img = img;
+        this.remain = remain;
+    }
+
+
+    public int getRemain() {
+        return remain;
+    }
+
+    public void setRemain(int remain) {
+        this.remain = remain;
     }
 
     public String getImg() {

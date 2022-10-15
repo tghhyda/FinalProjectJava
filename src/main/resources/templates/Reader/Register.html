@@ -5,6 +5,7 @@
   <title>Library HomePage</title>
   <link rel="stylesheet" href="../css/style.css" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
   <script defer src="../js/register.js"></script>
 </head>
@@ -16,11 +17,11 @@
       <div class="user-detail">
         <div class="inputBx">
           <span class="details">Full Name</span>
-          <input type="text" th:field="*{nameReader}" placeholder="Enter your full name" required>
+          <input type="text" name="full_name" th:field="*{nameReader}" placeholder="Enter your full name" required>
         </div>
         <div class="inputBx">
           <span class="details">Type of Reader</span>
-          <select th:field="*{typeOfReader}">
+          <select name="type" th:field="*{typeOfReader}" required>
             <option value="">--</option>
             <option th:each="Type : ${listType}"
                     th:value="${Type.idType}"
@@ -29,15 +30,15 @@
         </div>
         <div class="inputBx">
           <span class="details">Phone</span>
-          <input type="text" th:field="*{phone}" placeholder="Enter your phone number" required>
+          <input type="text" name="phone" th:field="*{phone}" placeholder="Enter your phone number">
         </div>
         <div class="inputBx">
           <span class="details">Address</span>
-          <input type="text" name="address" th:field="*{address}" placeholder="Enter your address" required>
+          <input type="text" name="address" th:field="*{address}" placeholder="Enter your address">
         </div>
         <div class="inputBx">
           <span class="details">Birth Day</span>
-          <input type="date" name="birthday" th:field="*{birthday}" placeholder="Enter your birth day" required>
+          <input type="date" name="birthday" th:field="*{birthday}" placeholder="Enter your birth day">
         </div>
         <div class="inputBx">
           <span class="details">Email</span>
@@ -46,10 +47,19 @@
         <div class="inputBx">
           <span class="details">Password</span>
           <input class="password" name="password" type="password" th:field="*{password}" placeholder="Enter your password" required>
+          <span class="eye" onclick="seePassword()">
+            <i class="fa-regular fa-eye see_password"></i>
+            <i class="fa-regular fa-eye-slash hide_password"></i>
+          </span>
         </div>
         <div class="inputBx">
           <span class="details">Confirm Password</span>
           <input class="confirm_password" name="confirm_password" type="password" placeholder="Confirm your password" required>
+          <span class="eye_confirm" onclick="seeConfirmPassword()">
+            <i class="fa-regular fa-eye see_confirm_password"></i>
+            <i class="fa-regular fa-eye-slash hide_confirm_password"></i>
+          </span>
+          <span id="message"></span>
         </div>
       </div>
       <div class="gender-detail">
@@ -68,12 +78,12 @@
           </label>
           <label for="dot-3">
             <span class="dot three"></span>
-            <span class="gender">Orthers</span>
+            <span class="gender">Others</span>
           </label>
         </div>
       </div>
       <div class="button">
-        <input type="submit" class="button-submit-register"  value="Register">
+        <input type="submit" class="button-submit-register"  value="Register" onclick="return Validate()">
       </div>
     </form>
   </div>

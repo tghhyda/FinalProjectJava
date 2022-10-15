@@ -1,43 +1,38 @@
-function validatePassword(confirm, password){
-    if(confirm.value === password.value){
-        return true;
-    }else
-        return false;
-}
-
 const confirm_password_selector = document.querySelector(".confirm_password");
 const password_selector = document.querySelector(".password");
-const button_register_selector = document.querySelector(".button-submit-register");
-const register_form_selector = document.querySelector(".register_form");
 
-// const register_form_selector = document.querySelector(".register_form");
-// register_form_selector.addEventListener("submit", function (){
-//     if(validatePassword(confirm_password_selector, password_selector)){
-//         console.log("submit success");
-//         return;
-//     }else{
-//         console.log("submit fail");
-//         return;
-//     }
-// });
-
-
-// button_register_selector.addEventListener("click", function (){
-//     if(validatePassword(confirm_password_selector, password_selector)){
-//         console.log("submit success");
-//         return;
-//     }else{
-//         console.log("submit fail");
-//         return;
-//     }
-// });
-
-button_register_selector.addEventListener("click", function (){
-    if(validatePassword(confirm_password_selector, password_selector)){
-        console.log("submit success");
-        register_form_selector.setAttribute("th:action","@{process_register}")
-    }else{
-        console.log("submit fail");
-        return;
+function Validate() {
+    if (password_selector.value != confirm_password_selector.value) {
+        document.getElementById('message').innerHTML = ("Passwords do not match.");
+        return false;
     }
-});
+    return true;
+}
+
+function seePassword(){
+    const see_password = document.querySelector(".see_password");
+    const hide_password = document.querySelector(".hide_password");
+    if(password_selector.type === 'password'){
+        password_selector.type = "text";
+        see_password.style.display = "inline-block";
+        hide_password.style.display = "none";
+    }else{
+        password_selector.type = "password";
+        see_password.style.display = "none";
+        hide_password.style.display = "inline-block";
+    }
+}
+
+function seeConfirmPassword(){
+    const see_password = document.querySelector(".see_confirm_password");
+    const hide_password = document.querySelector(".hide_confirm_password");
+    if(confirm_password_selector.type === 'password'){
+        confirm_password_selector.type = "text";
+        see_password.style.display = "inline-block";
+        hide_password.style.display = "none";
+    }else{
+        confirm_password_selector.type = "password";
+        see_password.style.display = "none";
+        hide_password.style.display = "inline-block";
+    }
+}

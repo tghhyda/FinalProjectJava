@@ -8,7 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ReaderService{
@@ -31,5 +33,14 @@ public class ReaderService{
         reader.setRole(Role.READER);
 
         return readerRepository.save(reader);
+    }
+
+    public List<Reader> listAllReader(){
+        List<Reader> readers = new ArrayList<>();
+        for(Reader reader : readerRepository.findAll()){
+            if(reader.getRole() == Role.READER)
+                readers.add(reader);
+        }
+        return readers;
     }
 }

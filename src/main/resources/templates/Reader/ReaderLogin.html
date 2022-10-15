@@ -8,7 +8,9 @@
 
   <link rel="stylesheet" href="../css/style.css" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="../js/login.js"></script>
 </head>
 <body>
   <div class="section-login">
@@ -29,6 +31,10 @@
           <div class="inputBx">
             <span>Password</span>
             <input type="password" name="password" id="password" placeholder="Input Password" required>
+            <span class="eye" onclick="seePasswordLogin()">
+              <i class="fa-regular fa-eye see_login_password"></i>
+              <i class="fa-regular fa-eye-slash hide_login_password"></i>
+            </span>
           </div>
           <div class="remember">
             <label><input type="checkbox" name="remember-me"> Remember me</label>
@@ -38,6 +44,9 @@
           </div>
           <div class="inputBx">
             <p>Don't have an account? <a th:href="@{/user/register}">Sign up</a></p>
+          </div>
+          <div class="inputBx">
+            <p><a th:href="@{/}">Return Home Page</a></p>
           </div>
         </form>
         <h3>Login with social media</h3>

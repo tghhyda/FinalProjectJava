@@ -1,19 +1,23 @@
 package com.trangiahuytdtu.finalproject.controller;
 
+import com.trangiahuytdtu.finalproject.service.ReaderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AdminController {
+    @Autowired
+    ReaderService readerService;
     @GetMapping("/admin/login")
     public String viewAdminLogin(){
-        // Trả về url file html
         return "Admin/AdminLogin";
     }
 
     @GetMapping("/admin/home")
-    public String viewAdminHomePage(){
-        // Trả về url file html
+    public String viewAdminHomePage(Model model){
+        model.addAttribute("listReaders", readerService.listAllReader());
         return "Admin/AdminHome";
     }
 }
