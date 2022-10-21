@@ -7,18 +7,169 @@
 }
 
 
+.admin-content .pagination{
+	display:flex;
+	justify-content: flex-end;
+	width: 100%;
+	padding: 10px 20px;
+}
+.admin-content .pagination div{
+	padding: 10px;
+	border: 2px solid #d5d0d0;
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #0298cf;
+	color: #fff;
+	box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+	margin: 0 5px;
+	cursor: pointer;
+}
+.admin-content .book-table{
+	width: 100%;
+	position: relative;
+}
+
+.admin-content .book-table .book-table-header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	flex-wrap: wrap;
+	background-color: rgb(240,240,240);
+}
+
+.admin-content .book-table .book-table-header p{
+	color: black;
+	font-size: 20px;
+}
+
+.admin-content .book-table .book-table-header .add_new_book{
+	padding: 10px 20px;
+	color: #fff;
+	background-color: #029Bcf;
+	border-radius: 5px;
+}
+
+.admin-content .book-table .book-table-header input{
+	padding: 10px 20px;
+	margin: 0 10px;
+	outline: none;
+	border: 1px solid #0298cf;
+	border-radius: 6px;
+	color: #0298cf;
+}
+
+.admin-content .book-table .book_table-section{
+	height: 520px;
+	overflow: auto;
+}
+
+.admin-content .book-table .book_table-section table{
+	width: 100%;
+	table-layout: fixed;
+	min-width: 900px;
+	border-collapse: collapse;
+}
+
+.admin-content .book-table .book_table-section table thead th{
+	position: sticky;
+	top: 0;
+	background-color: #f6f9fc;
+	color: #8493a5;
+}
+
+.admin-content .book-table .book_table-section table th,td{
+	border-bottom: 1px solid #ddd;
+	padding: 10px 20px;
+	word-break: break-all;
+	text-align: center;
+}
+
+.admin-content .book-table .book_table-section table tr:hover td{
+	color: #0298cf;
+	background-color: #f6f9fc;
+}
+
+.admin-content .book-table .book_table-section table td a{
+	outline: none;
+	border-radius: 6px;
+	padding: 7px;
+	color: black;
+	background-color: #fff;
+}
+
+.admin-content .book-table .book_table-section table td a:nth-child(1){
+	background-color: #0298cf;
+}
+.admin-content .book-table .book_table-section table td a:nth-child(2){
+	background-color: #e72020;
+}
+.admin-content .book-table .book_table-section table td a:nth-child(3){
+	background-color: #14be2b;
+}
+
+.admin-content .book-table .book_table-section ::-webkit-scrollbar{
+	height: 5px;
+	width: 5px;
+}
+.admin-content .book-table .book_table-section ::-webkit-scrollbar-track{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.admin-content .book-table .book_table-section ::-webkit-scrollbar-thumb{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.admin-content .book-table .book-table-header input::placeholder{
+	color: #0298cf;
+}
+
 .admin-container-homepage table td img{
 	width: 40px;
 	height: 40px;
 	align-items: center;
 	justify-content: center;
 }
+.admin-container-homepage .admin-main-content .header .nav .user ul li a{
+	display: block;
+	color: #333;
+	padding: 5px;
+}
+.admin-container-homepage .admin-main-content .header .nav .user ul li input[type=submit]{
+	display: block;
+	border: none;
+}
+.admin-container-homepage .admin-main-content .header .nav .user ul li a:hover{
+	background: #333;
+	color: #fff;
+}
+.admin-container-homepage .admin-main-content .header .nav .user .dropdown-menu{
+	position: relative;
+}
+.admin-container-homepage .admin-main-content .header .nav .user .dropdown-menu:hover > ul{
+	position: absolute;
+	display: initial;
+}
+.admin-container-homepage .admin-main-content .header .nav .user ul{
+	position: absolute;
+	left: 0;
+	width: 200px;
+	background: #fff;
+	display: none;
+	top: 16px;
+}
+.admin-container-homepage li{
+	list-style: none;
+}
 
 .admin-main-content table{
 	padding: 10px;
 }
 .admin-main-content table th,td{
-	text-align: left;
+	text-align: center;
 	padding: 8px;
 }
 .admin-main-content table th{
@@ -108,12 +259,6 @@
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.admin-main-content .btn{
-	background: red;
-	color: white;
-	padding: 5px 10px;
-	text-align: center;
-}
 .admin-main-content .header .nav .user i{
 	font-size: 25px;
 }
@@ -152,10 +297,9 @@
 }
 
 .admin-container-homepage .admin-main-content .header .nav .search{
-	flex: 3;
+	flex: 4;
 	display: flex;
 	justify-content: center;
-
 }
 
 .admin-container-homepage .admin-main-content .header .nav .search input[type=text]{
@@ -176,7 +320,7 @@
 }
 
 .admin-container-homepage .admin-main-content .header .nav .user{
-	flex: 1;
+	flex: 2;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

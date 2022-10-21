@@ -20,4 +20,9 @@ public class AdminController {
         model.addAttribute("listReaders", readerService.listAllReader());
         return "Admin/AdminHome";
     }
+
+    @GetMapping("/admin/book")
+    public String viewAdminBook(Model model){
+        return "Admin/AdminBook";
+    }
 }

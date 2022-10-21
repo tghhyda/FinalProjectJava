@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Library Admin HomePage</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="admin-container-homepage">
+  <div class="side-menu">
+    <div class="brand-name">
+      <h1>Brand</h1>
+    </div>
+    <ul>
+      <li><a th:href="@{/admin/home}"><i class="fa-solid fa-house"></i>&nbsp;<span>Dashboard</span></a></li>
+      <li><a th:href="@{/admin/book}"><i class="fa-solid fa-book"></i>&nbsp;<span>Book</span></a></li>
+      <li><a th:href="@{#}"><i class="fa-solid fa-users"></i>&nbsp;<span>Reader</span></a></li>
+      <li><a th:href="@{#}"><i class="fa-solid fa-book"></i>&nbsp;<span>Transaction</span></a></li>
+    </ul>
+  </div>
+
+  <div class="admin-main-content">
+    <div class="header">
+      <div class="nav">
+        <div class="search">
+          <input type="text" placeholder="Search here">
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="user">
+          <a th:href="@{#}" class="btn">Add new</a>
+          <i class="fa-sharp fa-solid fa-bell"></i>
+          <div class="img-case">
+            <img src="../images/book2.jpg">
+          </div>
+          <div class="dropdown-menu">
+            <a th:href="@{#}">[[${#request.userPrincipal.principal.username}]]
+              <span><i class="fa-solid fa-angle-down" style="font-size: 10px"></i></span></a>
+
+            <ul>
+              <li><a th:href="@{#}">Profile</a></li>
+              <li><a th:href="@{#}">Change password</a></li>
+              <li><a th:href="@{#}">Setting</a></li>
+              <li>
+                <form th:action="@{/admin/logout}" method="post">
+                  <input type="submit" value="Logout">
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="admin-content">
+      <div class="book-table">
+        <div class="book-table-header">
+          <p>Book detail</p>
+          <div>
+            <input placeholder="Search by Author name">
+            <a class="add_new_book" th:href="@{#}">Add new</a>
+          </div>
+        </div>
+        <div class="book_table-section">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Remain</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>book01</td>
+                <td><img src="../images/book2.jpg"></td>
+                <td>Mat Biec</td>
+                <td>Nguyễn Nhật Ánh</td>
+                <td>50000</td>
+                <td>12</td>
+                <td>
+                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{#}"><i class="fa-solid fa-trash"></i></a>
+                  <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination">
+          <div><i class="fa-solid fa-angles-left"></i></div>
+          <div><i class="fa-solid fa-chevron-left"></i></div>
+          <div>1</div>
+          <div>2</div>
+          <div><i class="fa-solid fa-angles-right"></i></div>
+          <div><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
