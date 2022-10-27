@@ -6,6 +6,97 @@
 	font:11px/18px Georgia, Palatino, "Times New Roman", Times, Serif;
 }
 
+.section-book-add{
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.section-book-add .container-book-add{
+	max-width: 700px;
+	width: 100%;
+	background: #fff;
+	padding: 25px 30px;
+	border-radius: 5px;
+}
+
+.section-book-add .container-book-add .book-add-title{
+	font-size: 25px;
+	margin-bottom: 16px;
+	font-weight: 500;
+	position: relative;
+}
+.section-book-add .container-book-add .book-add-title::before{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 25px;
+	height: 3px;
+	width: 30px;
+	background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.section-book-add .container-book-add form{
+	/*display: flex;*/
+	/*gap: 0 10px;*/
+	/*justify-content: space-between;*/
+	/*margin: 20px 0 12px 0;*/
+
+	display: grid;
+
+	grid-template-columns: 1fr min-content;
+
+	gap: 0 12px;
+}
+.section-book-add .container-book-add form .book-detail{
+	display: grid;
+	/*flex-wrap: wrap;*/
+	/*justify-content: space-between;*/
+	/*margin: 20px 0 12px 0;*/
+
+	grid-template-rows: max-content 1fr max-content;
+
+	gap: 12px 0;
+}
+
+.section-book-add .container-book-add form .book-detail .book-detail_form{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.section-book-add .container-book-add form .avatar img{
+	width: 100px;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.section-book-add .container-book-add form .book-detail .inputBx{
+	width: calc(100% / 2 - 20px);
+	margin-bottom: 15px;
+	position: relative;
+
+	display: grid;
+
+	grid-template-columns: max-content 1fr;
+}
+
+.section-book-add .container-book-add form .avatar{
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+}
+
+.section-book-add .container-book-add form .book-detail .inputBx .details{
+	font-weight: 500;
+	margin-bottom: 5px;
+	display: block;
+	font-size: 17px;
+}
+
 
 .admin-content .pagination{
 	display:flex;
@@ -52,6 +143,11 @@
 	color: #fff;
 	background-color: #029Bcf;
 	border-radius: 5px;
+}
+
+.admin-content .book-table .book-table-header .add_new_book:hover{
+	color: #fff;
+	background-color: #110000;
 }
 
 .admin-content .book-table .book-table-header input{

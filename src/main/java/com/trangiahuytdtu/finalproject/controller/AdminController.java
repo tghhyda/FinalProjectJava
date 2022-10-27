@@ -1,5 +1,6 @@
 package com.trangiahuytdtu.finalproject.controller;
 
+import com.trangiahuytdtu.finalproject.service.BookService;
 import com.trangiahuytdtu.finalproject.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
     @Autowired
     ReaderService readerService;
+
+    @Autowired
+    BookService bookService;
     @GetMapping("/admin/login")
     public String viewAdminLogin(){
         return "Admin/AdminLogin";
@@ -23,6 +27,8 @@ public class AdminController {
 
     @GetMapping("/admin/book")
     public String viewAdminBook(Model model){
+        model.addAttribute("listBooks", bookService.listAllBooks());
         return "Admin/AdminBook";
     }
+
 }

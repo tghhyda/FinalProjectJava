@@ -37,21 +37,31 @@ public class Book {
     @Column(name="remain")
     private int remain;
 
+    @Column(name="description")
+    private String description;
+
     public Book() {
     }
 
-    public Book(String idBook, String nameBook, String author, Producer producer, TypeOfBook typeOfBook, int initialPrice, Set<Loan> loans, String img, int remain) {
+    public Book(String idBook, String nameBook, String author, Producer producer, TypeOfBook typeOfBook, int initialPrice, String img, int remain, String description) {
         this.idBook = idBook;
         this.nameBook = nameBook;
         this.author = author;
         this.producer = producer;
         this.typeOfBook = typeOfBook;
         this.initialPrice = initialPrice;
-        this.loans = loans;
         this.img = img;
         this.remain = remain;
+        this.description = description;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public int getRemain() {
         return remain;
@@ -117,6 +127,11 @@ public class Book {
         this.typeOfBook = typeOfBook;
     }
 
+    @Transient
+    public String getImagePath(){
+        if(img == null || idBook == null) return null;
+        return "/book-images/"+idBook+"/"+img;
+    }
     @Override
     public String toString() {
         return "Book{" +
