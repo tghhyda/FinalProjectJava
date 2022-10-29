@@ -15,7 +15,7 @@
 }
 
 .section-book-add .container-book-add{
-	max-width: 700px;
+	max-width: 1000px;
 	width: 100%;
 	background: #fff;
 	padding: 25px 30px;
@@ -39,36 +39,34 @@
 }
 
 .section-book-add .container-book-add form{
-	/*display: flex;*/
-	/*gap: 0 10px;*/
-	/*justify-content: space-between;*/
-	/*margin: 20px 0 12px 0;*/
-
 	display: grid;
-
-	grid-template-columns: 1fr min-content;
-
-	gap: 0 12px;
+	grid-template-columns: 1fr 1fr;
+	gap: 0 32px;
 }
+
+.section-book-add .container-book-add form .avatar input{
+	border: none;
+	border-radius: 5px;
+	background-color: #18ab12;
+	color: white;
+}
+
 .section-book-add .container-book-add form .book-detail{
 	display: grid;
-	/*flex-wrap: wrap;*/
-	/*justify-content: space-between;*/
-	/*margin: 20px 0 12px 0;*/
-
 	grid-template-rows: max-content 1fr max-content;
-
 	gap: 12px 0;
 }
 
 .section-book-add .container-book-add form .book-detail .book-detail_form{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+
+	gap: 0 12px;
 }
 
 .section-book-add .container-book-add form .avatar img{
-	width: 100px;
-	height: 100px;
+	width: 300px;
+	height: 300px;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 10px;
@@ -78,16 +76,99 @@
 	width: calc(100% / 2 - 20px);
 	margin-bottom: 15px;
 	position: relative;
-
 	display: grid;
+}
 
-	grid-template-columns: max-content 1fr;
+.section-book-add .container-book-add form .book-detail .description{
+	grid-area: 4 / 1 / 5 / 3;
+	font-size: 15px;
+}
+
+.section-book-add .container-book-add form .book-detail .description textarea{
+	max-width: 500px;
+	padding: 12px 12px;
+	border-radius: 10px;
+}
+
+.section-book-add .container-book-add form .book-detail .inputBx input{
+	height: 45px;
+	width: 250px;
+	outline: none;
+	border-radius: 5px;
+	font-size: 15px;
+	border: 1px solid #ccc;
+	padding-left: 15px;
+	border-bottom-width: 2px;
+}
+
+.section-book-add .container-book-add form .book-detail .inputBx select{
+	height: 45px;
+	width: 250px;
+	outline: none;
+	border-radius: 5px;
+	font-size: 15px;
+	border: 1px solid #ccc;
+	padding-left: 15px;
+	border-bottom-width: 2px;
+}
+
+.section-book-add .container-book-add form .book-detail .inputBx select option{
+	font-size: 15px;
+}
+
+.section-book-add .container-book-add form .book-detail .button input{
+	border: none;
+	padding: 6px 12px;
+	border-radius: 5px;
+}
+
+.section-book-add .container-book-add form .book-detail .button input[type=submit]{
+	color: #fff;
+	background-color: #0298cf;
+}
+
+.section-book-add .container-book-add form .book-detail .button input[type=submit]:hover{
+	color: #fff;
+	background-color: #41add3;
+}
+
+.section-book-add .container-book-add form .book-detail .button button{
+	border: none;
+	padding: 6px 12px;
+	border-radius: 5px;
+}
+
+.section-book-add .container-book-add form .book-detail .button button{
+	color: #fff;
+	background-color: #ff4584;
+}
+
+.section-book-add .container-book-add form .book-detail .button button:hover{
+	color: #fff;
+	background-color: #f66493;
+}
+
+.section-book-add .container-book-add form .book-detail .inputBx input:focus,
+.section-book-add .container-book-add form .book-detail .inputBx input:valid{
+	border-color: #9b59b6;
+}
+
+.section-book-add .container-book-add form .book-detail .inputBx select:focus,
+.section-book-add .container-book-add form .book-detail .inputBx select:valid{
+	border-color: #9b59b6;
 }
 
 .section-book-add .container-book-add form .avatar{
 	justify-content: center;
 	align-items: center;
 	margin-left: 10px;
+}
+
+.section-book-add .container-book-add form .book-detail .description .details{
+	font-weight: 500;
+	margin-bottom: 5px;
+	display: block;
+	font-size: 17px;
 }
 
 .section-book-add .container-book-add form .book-detail .inputBx .details{
