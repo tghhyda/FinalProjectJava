@@ -1,5 +1,6 @@
 package com.trangiahuytdtu.finalproject.controller;
 
+
 import com.trangiahuytdtu.finalproject.Exception.NotFoundException;
 import com.trangiahuytdtu.finalproject.entities.Book;
 import com.trangiahuytdtu.finalproject.entities.Producer;
@@ -75,7 +76,7 @@ public class BookController {
     }
 
     @GetMapping("/admin/book/delete/{id}")
-    public String deleteUser(@PathVariable("id") String id , RedirectAttributes ra){
+    public String deleteBook(@PathVariable("id") String id , RedirectAttributes ra){
         try {
             bookService.deleteBook(id);
             ra.addFlashAttribute("message","delete success");
@@ -83,5 +84,25 @@ public class BookController {
             ra.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin/book";
+    }
+
+    @GetMapping("admin/book/update/{id}")
+    public String updateBook(@PathVariable("id") String id ,  Model model, RedirectAttributes ra){
+        try{
+            Book book = bookService.findById(id);
+            model.addAttribute("book",book);
+
+            List<TypeOfBook> listType = typeBook.listAllTypeBook();
+            List<Producer> listProducers = producerService.listAllProducer();
+            model.addAttribute("listTypeBook", listType);
+            model.addAttribute("listProducers", listProducers);
+
+
+            model.addAttribute("pageTitle", "Edit book (Id: " + id + ")");
+            return "Admin/Book/UpdateBook";
+        }catch (NotFoundException e){
+            ra.addFlashAttribute("message",e.getMessage());
+            return "redirect:/admin/book";
+        }
     }
 }

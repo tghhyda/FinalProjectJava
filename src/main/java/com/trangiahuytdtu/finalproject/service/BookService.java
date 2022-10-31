@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -16,10 +17,11 @@ public class BookService {
     BookRepository bookRepository;
 
     public Book save(Book book){
-        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");
-        String currentTime = formatter.format(new Date());
-        book.setIdBook("Book"+currentTime);
-
+        if(book.getIdBook() == null){
+            SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");
+            String currentTime = formatter.format(new Date());
+            book.setIdBook("Book"+currentTime);
+        }
         return bookRepository.save(book);
     }
 
@@ -33,5 +35,13 @@ public class BookService {
             throw new NotFoundException("Could not find any book with id: "+ id);
         }
         bookRepository.deleteById(id);
+    }
+
+    public Book findById(String id) throws NotFoundException {
+        Optional<Book> rs = bookRepository.findById(id);
+        if(rs.isPresent()){
+            return rs.get();
+        }
+        throw new NotFoundException("Could not find any book with id: "+ id);
     }
 }

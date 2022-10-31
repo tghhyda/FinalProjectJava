@@ -87,7 +87,7 @@
                 <td><span th:text="${book.typeOfBook.nameType}"></span></td>
                 <td><span th:text="${book.remain}"></span></td>
                 <td>
-                  <a th:href="@{#}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a th:href="@{'/admin/book/update/'+ ${book.idBook}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   <a th:href="@{'/admin/book/delete/'+ ${book.idBook}}"><i class="fa-solid fa-trash"></i></a>
                   <a th:href="@{#}"><i class="fa-sharp fa-solid fa-info"></i></a>
                 </td>
