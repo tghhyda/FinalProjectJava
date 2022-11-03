@@ -24,6 +24,7 @@ public class AdminController {
 
     @GetMapping("/admin/home")
     public String viewAdminHomePage(Model model){
+        model.addAttribute("listBooks", bookService.listAllBooks());
         model.addAttribute("listReaders", readerService.listAllReader());
         return "Admin/AdminHome";
     }

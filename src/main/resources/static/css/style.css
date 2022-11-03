@@ -14,6 +14,35 @@
 	background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
+.admin-main-content .modal-content .modal-header .modal-title{
+	font-weight: 500;
+	font-size: 24px;
+}
+.admin-main-content .modal-content .modal-body{
+	display: grid;
+	justify-items: start;
+	gap: 12px 0;
+	min-width: 300px;
+}
+
+.admin-main-content .modal-content .modal-body .details-book{
+	display: flex;
+	margin-left: 20%;
+	gap: 10px;
+}
+
+.admin-main-content .modal-content .modal-body .details-book .detail{
+	font-size: 18px;
+}
+
+.admin-main-content .modal-content .modal-body .details-book .detail-title{
+	font-size: 18px;
+}
+.admin-main-content .modal-content .modal-body img{
+	height: 200px;
+	width: 150px;
+	justify-self: center;
+}
 .section-book-add .container-book-add{
 	max-width: 1000px;
 	width: 100%;
@@ -241,7 +270,7 @@
 }
 
 .admin-content .book-table .book_table-section{
-	height: 520px;
+	height: 500px;
 	overflow: auto;
 }
 
@@ -289,6 +318,17 @@
 	background-color: #14be2b;
 }
 
+.admin-content .book-table .book_table-section table td a:nth-child(1):hover{
+	background-color: #54adce;
+}
+.admin-content .book-table .book_table-section table td a:nth-child(2):hover{
+	background-color: #d77b7b;
+}
+.admin-content .book-table .book_table-section table td a:nth-child(3):hover{
+	background-color: #71ab7b;
+	cursor: pointer;
+}
+
 .admin-content .book-table .book_table-section ::-webkit-scrollbar{
 	height: 5px;
 	width: 5px;
@@ -326,7 +366,17 @@
 .admin-container-homepage .admin-main-content .header .nav .user .dropdown-menu{
 	position: relative;
 }
+
+.admin-container-homepage .admin-main-content .header .nav .user .dropdown-menu-book{
+	position: relative;
+}
+
 .admin-container-homepage .admin-main-content .header .nav .user .dropdown-menu:hover > ul{
+	position: absolute;
+	display: initial;
+}
+
+.admin-container-homepage .admin-main-content .header .nav .user .dropdown-menu-book:hover > ul{
 	position: absolute;
 	display: initial;
 }

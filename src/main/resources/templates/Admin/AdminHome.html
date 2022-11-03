@@ -111,22 +111,17 @@
               </tr>
             </thead>
             <tbody>
-<!--              <tr th:if="${books.empty}">-->
-<!--                <td colspan="2"> No Books Available </td>-->
-<!--              </tr>-->
-<!--              <tr th:each="book : ${books}">-->
-<!--                <td><span th:text="${book.title}"> Title </span></td>-->
-<!--                <td><span th:text="${book.author}"> Author </span></td>-->
-<!--              </tr>-->
-              <tr>
-                <td>book01</td>
-                <td><img src="../images/book2.jpg"></td>
-                <td>Mat Biec</td>
-                <td>Nguyễn Nhật Ánh</td>
-                <td>50000</td>
-                <td>12</td>
-                <td><a th:href="@{#}" class="btn">View</a></td>
-              </tr>
+            <tr th:each="book : ${listBooks}">
+              <td><span th:text="${book.idBook}"></span></td>
+              <td><img th:src="${book.imagePath}"></td>
+              <td><span th:text="${book.nameBook}"></span></td>
+              <td><span th:text="${book.author}"></span></td>
+              <td><span th:text="${book.typeOfBook.nameType}"></span></td>
+              <td><span th:text="${book.remain}"></span></td>
+              <td>
+                  <a th:href="@{#}" class="btn">View</a>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>

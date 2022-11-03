@@ -97,7 +97,6 @@ public class BookController {
             model.addAttribute("listTypeBook", listType);
             model.addAttribute("listProducers", listProducers);
 
-
             model.addAttribute("pageTitle", "Edit book (Id: " + id + ")");
             return "Admin/Book/UpdateBook";
         }catch (NotFoundException e){

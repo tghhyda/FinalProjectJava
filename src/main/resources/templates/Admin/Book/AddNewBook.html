@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Library HomePage</title>
-    <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/style.css" type="text/css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -18,7 +18,8 @@
                 <div class="book-detail_form">
                     <div class="inputBx">
                         <span class="details">Book Title</span>
-                        <input type="text" name="bookTitle" th:field="*{nameBook}" placeholder="Enter Book Title" required>
+                        <input type="text" name="bookTitle" th:field="*{nameBook}" placeholder="Enter Book Title"
+                               required>
                     </div>
                     <div class="inputBx">
                         <span class="details">Category</span>
@@ -31,7 +32,8 @@
                     </div>
                     <div class="inputBx">
                         <span class="details">Author</span>
-                        <input type="text" name="author" th:field="*{author}" placeholder="Enter the writer's name" required>
+                        <input type="text" name="author" th:field="*{author}" placeholder="Enter the writer's name"
+                               required>
                     </div>
                     <div class="inputBx">
                         <span class="details">Producer</span>
@@ -48,11 +50,12 @@
                     </div>
                     <div class="inputBx">
                         <span class="details">Remaining</span>
-                        <input type="number" name="remain" th:field="*{remain}" placeholder="Enter number of books in stock" required>
+                        <input type="number" name="remain" th:field="*{remain}"
+                               placeholder="Enter number of books in stock" required>
                     </div>
                     <div class="description">
                         <span class="details">Description</span>
-<!--                        <input name="description" type="text" th:field="*{description}" placeholder="Book description here">-->
+                        <!--                        <input name="description" type="text" th:field="*{description}" placeholder="Book description here">-->
                         <textarea id="txtArea" rows="5" cols="90" th:field="*{description}"></textarea>
                     </div>
                 </div>
@@ -60,7 +63,8 @@
                     <input type="submit" value="Add">
                     <button type="button" value="Cancel"
                             onclick="window.location='http://localhost:8080/admin/book';
-                            return false;">Cancel</button>
+                            return false;">Cancel
+                    </button>
                 </div>
             </div>
             <div class="avatar">
@@ -75,17 +79,17 @@
 </div>
 <script type="text/javascript">
 
-    $(document).ready(function (){
-        $('#photo').change(function (){
+    $(document).ready(function () {
+        $('#photo').change(function () {
             showImageThumbnail(this);
         });
     });
 
-    function showImageThumbnail(fileInput){
+    function showImageThumbnail(fileInput) {
         const file = fileInput.files[0];
         const reader = new FileReader();
 
-        reader.onload = function (e){
+        reader.onload = function (e) {
             $('#thumbnail').attr('src', e.target.result);
         };
 
