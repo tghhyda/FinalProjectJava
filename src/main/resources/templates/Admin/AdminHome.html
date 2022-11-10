@@ -17,7 +17,7 @@
     <ul>
       <li><a th:href="@{/admin/home}"><i class="fa-solid fa-house"></i>&nbsp;<span>Dashboard</span></a></li>
       <li><a th:href="@{/admin/book}"><i class="fa-solid fa-book"></i>&nbsp;<span>Book</span></a></li>
-      <li><a th:href="@{#}"><i class="fa-solid fa-users"></i>&nbsp;<span>Reader</span></a></li>
+      <li><a th:href="@{/admin/reader}"><i class="fa-solid fa-users"></i>&nbsp;<span>Reader</span></a></li>
       <li><a th:href="@{#}"><i class="fa-solid fa-book"></i>&nbsp;<span>Transaction</span></a></li>
     </ul>
   </div>
@@ -96,7 +96,7 @@
         <div class="new-books">
           <div class="title">
             <h2>New Books</h2>
-            <a th:href="@{#}" class="btn">View All</a>
+            <a th:href="@{/admin/book}" class="btn">View All</a>
           </div>
           <table>
             <thead>
@@ -128,7 +128,7 @@
         <div class="new-readers">
           <div class="title">
             <h2>New Readers</h2>
-            <a th:href="@{#}" class="btn">View All</a>
+            <a th:href="@{/admin/reader}" class="btn">View All</a>
           </div>
           <table>
             <thead>
@@ -143,7 +143,7 @@
                 <td colspan="2"> No Reader Available </td>
               </tr>
               <tr th:each="reader : ${listReaders}">
-                <td><img th:src="${reader.img}"></td>
+                <td><img th:src="${reader.imagePath}"></td>
                 <td><span th:text="${reader.nameReader}"></span></td>
                 <td><a th:href="@{#}" class="btn">View</a></td>
               </tr>

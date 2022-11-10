@@ -13,7 +13,7 @@
 <div class="section-register">
   <div class="container-register">
     <div class="register-title">Registration</div>
-    <form class="register_form" th:action="@{/process_register}" method="post" th:object="${reader}">
+    <form class="register_form" th:action="@{/register/save}" method="post" th:object="${reader}" enctype="multipart/form-data">
       <div class="user-detail">
         <div class="inputBx">
           <span class="details">Full Name</span>
@@ -60,6 +60,11 @@
             <i class="fa-regular fa-eye-slash hide_confirm_password"></i>
           </span>
           <span id="message"></span>
+        </div>
+        <div>
+          <span class="details">Avatar</span>
+          <input type="file" name="photo" id="photo"
+                 placeholder="Enter photo" accept="image/png, image/jpeg">
         </div>
       </div>
       <div class="gender-detail">
