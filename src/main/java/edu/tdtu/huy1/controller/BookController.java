@@ -38,8 +38,8 @@ public class BookController {
     @GetMapping("/admin/book/add")
     public String viewAddNewBook(Model model){
         model.addAttribute("book", new Book());
-        List<TypeOfBook> listType = typeBook.listAllTypeBook();
-        List<Producer> listProducers = producerService.listAllProducer();
+        List<TypeOfBook> listType = typeBook.listAllTypeBook("");
+        List<Producer> listProducers = producerService.listAllProducer("");
         model.addAttribute("listTypeBook", listType);
         model.addAttribute("listProducers", listProducers);
         return "Admin/Book/AddNewBook";
@@ -91,8 +91,8 @@ public class BookController {
             Book book = bookService.findById(id);
             model.addAttribute("book",book);
 
-            List<TypeOfBook> listType = typeBook.listAllTypeBook();
-            List<Producer> listProducers = producerService.listAllProducer();
+            List<TypeOfBook> listType = typeBook.listAllTypeBook("");
+            List<Producer> listProducers = producerService.listAllProducer("");
             model.addAttribute("listTypeBook", listType);
             model.addAttribute("listProducers", listProducers);
 

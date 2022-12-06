@@ -25,7 +25,10 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public List<Book> listAllBooks(){
+    public List<Book> listAllBooks(String keyword){
+        if(keyword != null){
+            return bookRepository.findAll(keyword);
+        }
         return (List<Book>) bookRepository.findAll();
     }
 

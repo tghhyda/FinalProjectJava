@@ -3,6 +3,7 @@ package edu.tdtu.huy1.service;
 import edu.tdtu.huy1.Exception.NotFoundException;
 import edu.tdtu.huy1.entities.Reader;
 import edu.tdtu.huy1.entities.Role;
+import edu.tdtu.huy1.entities.TypeOfReader;
 import edu.tdtu.huy1.repository.ReaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,11 +37,18 @@ public class ReaderService {
         return readerRepository.save(reader);
     }
 
-    public List<Reader> listAllReader() {
+    public List<Reader> listAllReader(String keyword) {
         List<Reader> readers = new ArrayList<>();
-        for (Reader reader : readerRepository.findAll()) {
-            if (reader.getRole() == Role.READER)
-                readers.add(reader);
+        if (keyword != null) {
+            for (Reader reader : readerRepository.findAll(keyword)) {
+                if (reader.getRole() == Role.READER)
+                    readers.add(reader);
+            }
+        } else {
+            for (Reader reader : readerRepository.findAll()) {
+                if (reader.getRole() == Role.READER)
+                    readers.add(reader);
+            }
         }
         return readers;
     }
@@ -49,11 +57,11 @@ public class ReaderService {
         List<Reader> readers = new ArrayList<>();
         int count = 0;
         for (Reader reader : readerRepository.findAll()) {
-            if(count == 4)
+            if (count == 4)
                 break;
             if (reader.getRole() == Role.READER)
                 readers.add(reader);
-                count++;
+            count++;
         }
         return readers;
     }

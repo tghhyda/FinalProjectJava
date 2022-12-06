@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name="producer")
 public class Producer {
     @Id
-    @Column(name="idProducer", length = 20)
+    @Column(name="idProducer")
     private String idProducer;
 
     @Column(name="nameProducer", length = 100)

@@ -260,13 +260,47 @@
 	background-color: #110000;
 }
 
-.admin-content .book-table .book-table-header input{
+.admin-content .book-table .book-table-header input[type=text]{
 	padding: 10px 20px;
+	width: 250px;
 	margin: 0 10px;
 	outline: none;
 	border: 1px solid #0298cf;
 	border-radius: 6px;
 	color: #0298cf;
+}
+
+.admin-content .book-table .book-table-header input[type=submit]{
+	border-radius: 5px;
+	background-color: #46c46e;
+	color: #0a0707;
+	border: none;
+	padding: 5px;
+	margin-right: 5px;
+}
+
+.admin-content .book-table .book-table-header input[type=submit]:hover{
+	background-color: #68c787;
+	color: #0a0707;
+}
+
+.admin-content .book-table .book-table-header input[type=button]{
+	border-radius: 5px;
+	background-color: #c4ba46;
+	color: #0a0707;
+	border: none;
+	padding: 5px;
+}
+
+.admin-content .book-table .book-table-header input[type=button]:hover{
+	background-color: #c5bd75;
+	color: #0a0707;
+}
+
+.admin-content .book-table .book-table-header form{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .admin-content .book-table .book_table-section{

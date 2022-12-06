@@ -38,7 +38,7 @@ public class ReaderController {
     @GetMapping("/user/register")
     public String showRegisterForm(Model model){
         model.addAttribute("reader", new Reader());
-        List<TypeOfReader> listType = typeService.listAll();
+        List<TypeOfReader> listType = typeService.listAll("");
         model.addAttribute("listType", listType);
         return "Reader/Register";
     }
