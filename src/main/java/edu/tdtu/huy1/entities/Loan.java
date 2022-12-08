@@ -1,5 +1,7 @@
 package edu.tdtu.huy1.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -16,10 +18,13 @@ public class Loan {
     @JoinColumn(name="idReader", referencedColumnName = "idReader")
     private Reader reader;
 
+
     @Column(name="dateBorrow")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateBorrow;
 
     @Column(name="dateReturn")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateReturn;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -35,8 +40,7 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(int idLoan, Reader reader, Date dateBorrow, Date dateReturn) {
-        this.idLoan = idLoan;
+    public Loan(Reader reader, Date dateBorrow, Date dateReturn) {
         this.reader = reader;
         this.dateBorrow = dateBorrow;
         this.dateReturn = dateReturn;
@@ -72,6 +76,18 @@ public class Loan {
 
     public void setDateReturn(Date dateReturn) {
         this.dateReturn = dateReturn;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+    public void addBook(Book book){
+        this.books.add(book);
     }
 
     @Override

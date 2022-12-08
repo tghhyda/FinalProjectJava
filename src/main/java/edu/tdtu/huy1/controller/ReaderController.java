@@ -1,11 +1,14 @@
 package edu.tdtu.huy1.controller;
 
 import edu.tdtu.huy1.Exception.NotFoundException;
+import edu.tdtu.huy1.entities.Loan;
 import edu.tdtu.huy1.entities.Reader;
 import edu.tdtu.huy1.entities.TypeOfReader;
+import edu.tdtu.huy1.service.BookService;
 import edu.tdtu.huy1.service.ReaderService;
 import edu.tdtu.huy1.service.TypeOfReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -29,6 +32,9 @@ public class ReaderController {
     @Autowired
     private TypeOfReaderService typeService;
 
+    @Autowired
+    private BookService bookService;
+
     @GetMapping("/reader/login")
     public String viewReaderLogin(){
         // Trả về url file html
@@ -50,8 +56,12 @@ public class ReaderController {
     }
 
     @GetMapping("/reader/home")
-    public String viewReaderHomePage(){
+    public String viewReaderHomePage(Model model, @Param("keyword") String keyword){
         // Trả về url file html
+        model.addAttribute("listBooks", bookService.listAllBooks(keyword));
+//        model.addAttribute("currentReader", readerService.findByEmail())
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("newLoan", new Loan());
         return "Reader/ReaderHome";
     }
     @PostMapping("register/save")

@@ -73,4 +73,8 @@ public class ReaderService {
         }
         readerRepository.deleteById(id);
     }
+
+    public Reader findByEmail(String email){
+        return  readerRepository.findByEmail(email);
+    }
 }

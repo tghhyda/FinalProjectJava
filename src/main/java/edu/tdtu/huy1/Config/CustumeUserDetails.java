@@ -62,4 +62,12 @@ public class CustumeUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public String getNameReader(){
+        return this.reader.getNameReader();
+    }
+
+    public String getIdReader(){
+        return this.reader.getIdReader();
+    }
 }
