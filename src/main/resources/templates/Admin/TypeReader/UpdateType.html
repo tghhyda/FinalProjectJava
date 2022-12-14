@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Library HomePage</title>
+  <base href="/">
+  <link rel="stylesheet" href="../../css/style.css" type="text/css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="section-book-add">
+  <div class="container-book-add">
+    <div class="book-add-title">[[${pageTitle}]]</div>
+    <form th:action="@{/admin/typereader/save}" method="post" th:object="${typeOfReader}">
+      <input type="hidden" th:field="*{idType}">
+      <div class="book-detail">
+        <div class="book-detail_form">
+          <div class="inputBx">
+            <span class="details">Name Type</span>
+            <input type="text" name="nameProducer" th:field="*{name}" placeholder="Enter Name"
+                   required>
+          </div>
+          <div class="inputBx">
+            <span class="details">Phone</span>
+            <input type="text" name="phone" th:field="*{note}" placeholder="Enter note">
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Save">
+          <button type="button" value="Cancel"
+                  onclick="window.location='http://localhost:8080/admin/typereader';
+                            return false;">Cancel
+          </button>
+        </div>
+      </div>
+      <div class="avatar">
+        <img id="thumbnail" alt="Image preview" src="../../images/TDT_logo.png">
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

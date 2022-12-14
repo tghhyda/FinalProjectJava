@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+  <base href="/">
   <meta charset="UTF-8">
   <title>Library HomePage</title>
   <link rel="stylesheet" href="../css/style.css" type="text/css" />
@@ -12,8 +13,11 @@
 <body>
 <div class="section-register">
   <div class="container-register">
-    <div class="register-title">Registration</div>
-    <form class="register_form" th:action="@{/register/save}" method="post" th:object="${reader}" enctype="multipart/form-data">
+    <div class="register-title">Profile</div>
+    <form class="register_form" method="get" th:object="${reader}" enctype="multipart/form-data">
+      <div class="profile">
+        <img style="height: 200px; width: 150px; margin-left: 250px" th:src="*{imagePath}">
+      </div>
       <div class="user-detail">
         <div class="inputBx">
           <span class="details">Full Name</span>
@@ -44,28 +48,6 @@
           <span class="details">Email</span>
           <input type="email" name="email" th:field="*{email}" placeholder="Enter your email" required>
         </div>
-        <div class="inputBx">
-          <span class="details">Password</span>
-          <input class="password" name="password" type="password" th:field="*{password}" placeholder="Enter your password" required>
-          <span class="eye" onclick="seePassword()">
-            <i class="fa-regular fa-eye see_password"></i>
-            <i class="fa-regular fa-eye-slash hide_password"></i>
-          </span>
-        </div>
-        <div class="inputBx">
-          <span class="details">Confirm Password</span>
-          <input class="confirm_password" name="confirm_password" type="password" placeholder="Confirm your password" required>
-          <span class="eye_confirm" onclick="seeConfirmPassword()">
-            <i class="fa-regular fa-eye see_confirm_password"></i>
-            <i class="fa-regular fa-eye-slash hide_confirm_password"></i>
-          </span>
-          <span id="message"></span>
-        </div>
-        <div>
-          <span class="details">Avatar</span>
-          <input type="file" name="photo" id="photo"
-                 placeholder="Enter photo" accept="image/png, image/jpeg">
-        </div>
       </div>
       <div class="gender-detail">
         <input type="radio" name="gender" id="dot-1" value="Male" th:field="*{gender}">
@@ -88,13 +70,15 @@
         </div>
       </div>
       <div class="button">
-        <input type="submit" class="button-submit-register"  value="Register" onclick="return Validate()">
-      </div>
-      <div class="inputBx">
-        <p><a th:href="@{/}">Return Home Page</a></p>
+        <input type="button" class="button-submit-register" value="Back" onclick="back()">
       </div>
     </form>
   </div>
 </div>
+<script>
+  function back(){
+    window.location = "reader/home"
+  }
+</script>
 </body>
 </html>

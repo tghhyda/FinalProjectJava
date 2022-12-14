@@ -5,6 +5,7 @@ import edu.tdtu.huy1.entities.Loan;
 import edu.tdtu.huy1.entities.Reader;
 import edu.tdtu.huy1.entities.TypeOfReader;
 import edu.tdtu.huy1.service.BookService;
+import edu.tdtu.huy1.service.LoanService;
 import edu.tdtu.huy1.service.ReaderService;
 import edu.tdtu.huy1.service.TypeOfReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ReaderController {
@@ -34,6 +36,12 @@ public class ReaderController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private LoanService loanService;
+
+    @Autowired
+    private TypeOfReaderService typeOfReaderService;
 
     @GetMapping("/reader/login")
     public String viewReaderLogin(){
@@ -65,7 +73,7 @@ public class ReaderController {
         return "Reader/ReaderHome";
     }
     @PostMapping("register/save")
-    public String saveBook(@ModelAttribute(name = "reader") Reader reader,
+    public String saveReader(@ModelAttribute(name = "reader") Reader reader,
                            RedirectAttributes ra,
                            @RequestParam("photo") MultipartFile multipartFile) throws IOException {
 
@@ -102,5 +110,20 @@ public class ReaderController {
             ra.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/admin/reader";
+    }
+
+    @GetMapping("reader/history/{id}")
+    public String viewHistoryPage(Model model, @PathVariable("id") String id){
+        Optional<Reader> reader = readerService.findById(id);
+        model.addAttribute("listLoan", loanService.listAllByReader(reader));
+        return "Reader/ReaderHistory";
+    }
+
+    @GetMapping("reader/profile/{email}")
+    public String viewReaderProfile(Model model, @PathVariable("email") String email){
+        Reader reader = readerService.findByEmail(email);
+        model.addAttribute("listType", typeOfReaderService.listAll(""));
+        model.addAttribute("reader", reader);
+        return "Reader/ReaderProfile";
     }
 }

@@ -6,6 +6,10 @@
 	font:11px/18px Georgia, Palatino, "Times New Roman", Times, Serif;
 }
 
+.profile{
+	justify-items: center;
+	align-items: center;
+}
 .section-book-add{
 	display: flex;
 	height: 100vh;

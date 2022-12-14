@@ -26,7 +26,7 @@
       <li><a th:href="@{/admin/producer}"><i class="fa-solid fa-users"></i>&nbsp;<span>Producer</span></a></li>
       <li><a th:href="@{/admin/typereader}"><i class="fa-solid fa-users"></i>&nbsp;<span>Type Reader</span></a></li>
       <li><a th:href="@{/admin/typebook}"><i class="fa-solid fa-users"></i>&nbsp;<span>Type Book</span></a></li>
-      <li><a th:href="@{#}"><i class="fa-solid fa-book"></i>&nbsp;<span>Transaction</span></a></li>
+      <li><a th:href="@{/admin/transaction}"><i class="fa-solid fa-book"></i>&nbsp;<span>Transaction</span></a></li>
     </ul>
   </div>
 
@@ -38,19 +38,18 @@
           <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div class="user">
-          <a th:href="@{#}" class="btn">Register</a>
+          <a th:href="@{/admin/register}" class="btn">Register</a>
           <i class="fa-sharp fa-solid fa-bell"></i>
           <div class="img-case">
             <img src="../images/book2.jpg">
           </div>
           <div class="dropdown-menu-book">
-            <a th:href="@{#}">[[${#request.userPrincipal.principal.username}]]
+            <a th:href="@{'/admin/profile/' + ${#request.userPrincipal.principal.username}}">
+              [[${#request.userPrincipal.principal.nameReader}]]
               <span><i class="fa-solid fa-angle-down" style="font-size: 10px"></i></span></a>
 
             <ul>
-              <li><a th:href="@{#}">Profile</a></li>
               <li><a th:href="@{#}">Change password</a></li>
-              <li><a th:href="@{#}">Setting</a></li>
               <li>
                 <form th:action="@{/admin/logout}" method="post">
                   <input type="submit" value="Logout">
@@ -64,7 +63,7 @@
     <div class="admin-content">
       <div class="book-table">
         <div class="book-table-header">
-          <p>Producer detail</p>
+          <p>Type of Book detail</p>
           <form th:action="@{/admin/typebook}">
             Filter:
             <input type="text" name="keyword" th:value="${keyword}"
@@ -95,10 +94,12 @@
               <td><span th:text="${type.nameType}"></span></td>
               <td><span th:text="${type.note}"></span></td>
               <td>
-                <a data-toggle="modal" th:attr="data-target=${'#viewModal'+type.idType}"><i
-                        class="fa-sharp fa-solid fa-info"></i></a>
+                <a th:href="@{'/admin/typebook/update/'+ ${type.idType}}"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
                 <a th:href="@{'/admin/typebook/delete/'+ ${type.idType}}"><i
                         class="fa-solid fa-trash"></i></a>
+                <a data-toggle="modal" th:attr="data-target=${'#viewModal'+type.idType}"><i
+                        class="fa-sharp fa-solid fa-info"></i></a>
               </td>
             </tr>
             </tbody>

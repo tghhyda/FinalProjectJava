@@ -3,7 +3,6 @@ package edu.tdtu.huy1.service;
 import edu.tdtu.huy1.Exception.NotFoundException;
 import edu.tdtu.huy1.entities.Reader;
 import edu.tdtu.huy1.entities.Role;
-import edu.tdtu.huy1.entities.TypeOfReader;
 import edu.tdtu.huy1.repository.ReaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReaderService {
@@ -34,6 +34,17 @@ public class ReaderService {
         encodePassword(reader);
         reader.setRole(Role.READER);
 
+        return readerRepository.save(reader);
+    }
+
+    public Reader saveAdmin(Reader reader) {
+        if(reader.getIdReader() == null){
+            SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmmss");
+            String currentTime = formatter.format(new Date());
+            reader.setIdReader("ADMIN" + currentTime);
+            encodePassword(reader);
+            reader.setRole(Role.ADMIN);
+        }
         return readerRepository.save(reader);
     }
 
@@ -74,6 +85,9 @@ public class ReaderService {
         readerRepository.deleteById(id);
     }
 
+    public Optional<Reader> findById(String id){
+        return readerRepository.findById(id);
+    }
     public Reader findByEmail(String email){
         return  readerRepository.findByEmail(email);
     }

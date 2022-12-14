@@ -1,6 +1,7 @@
 package edu.tdtu.huy1.controller;
 
 import edu.tdtu.huy1.entities.Producer;
+import edu.tdtu.huy1.entities.Reader;
 import edu.tdtu.huy1.entities.TypeOfBook;
 import edu.tdtu.huy1.entities.TypeOfReader;
 import edu.tdtu.huy1.service.*;
@@ -8,7 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -26,6 +39,10 @@ public class AdminController {
 
     @Autowired
     TypeOfBookService typeOfBookService;
+
+    @Autowired
+    LoanService loanService;
+
 
     @GetMapping("/admin/login")
     public String viewAdminLogin(){
@@ -80,5 +97,58 @@ public class AdminController {
         model.addAttribute("newType", new TypeOfBook());
 
         return "Admin/AdminTypeBook";
+    }
+
+    @GetMapping("/admin/transaction")
+    public String viewAdminTransaction(Model model, @Param("keyword") String keyword){
+        model.addAttribute("listLoan", loanService.listAll(keyword));
+        model.addAttribute("keyword",keyword);
+
+        return "Admin/AdminTransaction";
+    }
+
+    @GetMapping("/admin/register")
+    public String showRegisterForm(Model model){
+        model.addAttribute("reader", new Reader());
+        List<TypeOfReader> listType = typeOfReaderService.listAll("");
+        model.addAttribute("listType", listType);
+        return "Admin/AdminRegister";
+    }
+
+    @PostMapping("admin/save")
+    public String saveReader(@ModelAttribute(name = "reader") Reader reader,
+                             RedirectAttributes ra,
+                             @RequestParam("photo") MultipartFile multipartFile) throws IOException {
+
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        reader.setImg(fileName);
+        Reader savedReader = readerService.saveAdmin(reader);
+
+        String uploadDir = "./reader-images/" + savedReader.getIdReader();
+        Path uploadReaderPath = Paths.get(uploadDir);
+
+        if(!Files.exists(uploadReaderPath)){
+            Files.createDirectories(uploadReaderPath);
+        }
+
+        try(InputStream inputStream = multipartFile.getInputStream()){
+            Path filePath = uploadReaderPath.resolve(fileName);
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        }catch (IOException e){
+            throw new IOException("Could not save uploaded file"+fileName);
+        }
+
+
+        ra.addFlashAttribute("message","Saved successfully");
+
+        return "redirect:/admin/reader";
+    }
+
+    @GetMapping("admin/profile/{email}")
+    public String viewAdminProfile(Model model, @PathVariable("email") String email){
+        Reader admin = readerService.findByEmail(email);
+        model.addAttribute("listType", typeOfReaderService.listAll(""));
+        model.addAttribute("admin", admin);
+        return "Admin/AdminProfile";
     }
 }

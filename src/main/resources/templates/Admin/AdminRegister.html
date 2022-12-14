@@ -13,7 +13,7 @@
 <div class="section-register">
   <div class="container-register">
     <div class="register-title">Registration</div>
-    <form class="register_form" th:action="@{/register/save}" method="post" th:object="${reader}" enctype="multipart/form-data">
+    <form class="register_form" th:action="@{/admin/save}" method="post" th:object="${reader}" enctype="multipart/form-data">
       <div class="user-detail">
         <div class="inputBx">
           <span class="details">Full Name</span>
@@ -91,7 +91,7 @@
         <input type="submit" class="button-submit-register"  value="Register" onclick="return Validate()">
       </div>
       <div class="inputBx">
-        <p><a th:href="@{/}">Return Home Page</a></p>
+        <p><a th:href="@{/admin/home}">Return Home Page</a></p>
       </div>
     </form>
   </div>

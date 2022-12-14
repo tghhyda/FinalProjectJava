@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Admin HomePage</title>
@@ -12,6 +13,7 @@
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
+
 </head>
 <body>
 <div class="admin-container-homepage">
@@ -20,13 +22,8 @@
             <h1>Brand</h1>
         </div>
         <ul>
-            <li><a th:href="@{/admin/home}"><i class="fa-solid fa-house"></i>&nbsp;<span>Dashboard</span></a></li>
-            <li><a th:href="@{/admin/book}"><i class="fa-solid fa-book"></i>&nbsp;<span>Book</span></a></li>
-            <li><a th:href="@{/admin/reader}"><i class="fa-solid fa-users"></i>&nbsp;<span>Reader</span></a></li>
-            <li><a th:href="@{/admin/producer}"><i class="fa-solid fa-users"></i>&nbsp;<span>Producer</span></a></li>
-            <li><a th:href="@{/admin/typereader}"><i class="fa-solid fa-users"></i>&nbsp;<span>Type Reader</span></a></li>
-            <li><a th:href="@{/admin/typebook}"><i class="fa-solid fa-users"></i>&nbsp;<span>Type Book</span></a></li>
-            <li><a th:href="@{/admin/transaction}"><i class="fa-solid fa-book"></i>&nbsp;<span>Transaction</span></a></li>
+            <li><a th:href="@{/reader/home}"><i class="fa-solid fa-book"></i>&nbsp;<span>Book</span></a></li>
+            <li><a th:href="@{'/reader/history/' + ${#request.userPrincipal.principal.idReader}}"><i class="fa-solid fa-users"></i>&nbsp;<span>History</span></a></li>
         </ul>
     </div>
 
@@ -38,20 +35,20 @@
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <div class="user">
-                    <a th:href="@{/admin/register}" class="btn">Register</a>
+                    <a th:href="@{/user/register}" class="btn">Register</a>
                     <i class="fa-sharp fa-solid fa-bell"></i>
                     <div class="img-case">
                         <img src="../images/book2.jpg">
                     </div>
                     <div class="dropdown-menu-book">
-                        <a th:href="@{'/admin/profile/' + ${#request.userPrincipal.principal.username}}">
+                        <a th:href="@{'/reader/profile/' + ${#request.userPrincipal.principal.username}}">
                             [[${#request.userPrincipal.principal.nameReader}]]
                             <span><i class="fa-solid fa-angle-down" style="font-size: 10px"></i></span></a>
 
                         <ul>
                             <li><a th:href="@{#}">Change password</a></li>
                             <li>
-                                <form th:action="@{/admin/logout}" method="post">
+                                <form th:action="@{/reader/logout}" method="post">
                                     <input type="submit" value="Logout">
                                 </form>
                             </li>
@@ -63,14 +60,11 @@
         <div class="admin-content">
             <div class="book-table">
                 <div class="book-table-header">
-                    <p>Transaction detail</p>
-                    <form th:action="@{/admin/transaction}">
+                    <p>History detail</p>
+                    <form th:action="@{/reader/history}">
                         Filter:
-                        <input type="text" name="keyword" th:value="${keyword}"
-                               placeholder="Search here" required>
-                        &nbsp;
+                        <input type="text" name="keyword" th:value="${keyword}" placeholder="Search by id, name or author name" required>
                         <input type="submit" value="Search">
-                        &nbsp;
                         <input type="button" value="Clear" onclick="clearFilter()">
                     </form>
                 </div>
@@ -82,7 +76,6 @@
                             <th>Date Borrow</th>
                             <th>Date Return</th>
                             <th>Book</th>
-                            <th>Reader</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -97,12 +90,9 @@
                             <td th:each="book : ${loan.books}">
                                 <span th:text="${book.nameBook}"></span>
                             </td>
-                            <td><span th:text="${loan.reader.nameReader}"></span></td>
                             <td>
                                 <a data-toggle="modal" th:attr="data-target=${'#viewModal'+loan.idLoan}"><i
                                         class="fa-sharp fa-solid fa-info"></i></a>
-                                <a th:href="@{'/admin/loan/delete/'+ ${loan.idLoan}}"><i
-                                        class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                         </tbody>
@@ -118,7 +108,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- View Modal -->
         <div id="myViewModal" class="modal fade" role="dialog" th:each="loan : ${listLoan}"
@@ -154,7 +143,7 @@
 </div>
 <script type="text/javascript">
     function clearFilter(){
-        window.location = '/admin/transaction';
+        window.location = '/reader/history';
     }
 </script>
 </body>
