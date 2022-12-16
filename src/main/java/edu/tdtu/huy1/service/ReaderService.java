@@ -91,4 +91,11 @@ public class ReaderService {
     public Reader findByEmail(String email){
         return  readerRepository.findByEmail(email);
     }
+
+    public void updatePassword(String newPassword, Reader reader, PasswordEncoder passwordEncoder) {
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        reader.setPassword(encodedPassword);
+
+        readerRepository.save(reader);
+    }
 }

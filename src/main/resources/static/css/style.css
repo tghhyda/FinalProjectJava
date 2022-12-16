@@ -645,6 +645,12 @@
 	right: 3%;
 }
 
+.eye_new{
+	position: absolute;
+	top: 50%;
+	right: 3%;
+}
+
 
 .eye .see_password{
 	display: none;
@@ -655,6 +661,10 @@
 }
 
 .eye_confirm .see_confirm_password{
+	display: none;
+}
+
+.eye_new .see_new_password{
 	display: none;
 }
 

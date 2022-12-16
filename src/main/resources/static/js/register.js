@@ -1,5 +1,6 @@
 const confirm_password_selector = document.querySelector(".confirm_password");
 const password_selector = document.querySelector(".password");
+const new_password_selector = document.querySelector(".newPassword");
 
 function Validate() {
     if (password_selector.value != confirm_password_selector.value) {
@@ -18,6 +19,20 @@ function seePassword(){
         hide_password.style.display = "none";
     }else{
         password_selector.type = "password";
+        see_password.style.display = "none";
+        hide_password.style.display = "inline-block";
+    }
+}
+
+function seeNewPassword(){
+    const see_password = document.querySelector(".see_new_password");
+    const hide_password = document.querySelector(".hide_new_password");
+    if(new_password_selector.type === 'password'){
+        new_password_selector.type = "text";
+        see_password.style.display = "inline-block";
+        hide_password.style.display = "none";
+    }else{
+        new_password_selector.type = "password";
         see_password.style.display = "none";
         hide_password.style.display = "inline-block";
     }

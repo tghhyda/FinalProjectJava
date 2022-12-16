@@ -44,7 +44,7 @@
               <span><i class="fa-solid fa-angle-down" style="font-size: 10px"></i></span></a>
 
             <ul>
-              <li><a th:href="@{#}">Change password</a></li>
+              <li><a th:href="@{'/reader/change-password/' + ${#request.userPrincipal.principal.username}}">Change password</a></li>
               <li>
                 <form th:action="@{/reader/logout}" method="post">
                   <input type="submit" value="Logout">

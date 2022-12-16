@@ -70,4 +70,8 @@ public class CustumeUserDetails implements UserDetails {
     public String getIdReader(){
         return this.reader.getIdReader();
     }
+
+    public Reader getReader() {
+        return this.reader;
+    }
 }
