@@ -61,7 +61,7 @@
             <div class="book-table">
                 <div class="book-table-header">
                     <p>History detail</p>
-                    <form th:action="@{/reader/history}">
+                    <form th:action="@{'/reader/history/' + ${#request.userPrincipal.principal.idReader}}">
                         Filter:
                         <input type="text" name="keyword" th:value="${keyword}" placeholder="Search by id, name or author name" required>
                         <input type="submit" value="Search">
@@ -76,6 +76,7 @@
                             <th>Date Borrow</th>
                             <th>Date Return</th>
                             <th>Book</th>
+                            <th>isReturned</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -90,6 +91,7 @@
                             <td th:each="book : ${loan.books}">
                                 <span th:text="${book.nameBook}"></span>
                             </td>
+                            <td><span th:text="${loan.returned}"></span></td>
                             <td>
                                 <a data-toggle="modal" th:attr="data-target=${'#viewModal'+loan.idLoan}"><i
                                         class="fa-sharp fa-solid fa-info"></i></a>
@@ -143,7 +145,7 @@
 </div>
 <script type="text/javascript">
     function clearFilter(){
-        window.location = '/reader/history';
+        window.location = '/reader/history/ ' + [[${#request.userPrincipal.principal.username}]];
     }
 </script>
 </body>

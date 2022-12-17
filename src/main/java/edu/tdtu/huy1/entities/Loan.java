@@ -37,13 +37,25 @@ public class Loan {
                             nullable = false, updatable = false)})
     private Set<Book> books = new HashSet<>();
 
+    @Column(name = "isReturned")
+    private boolean isReturned;
+
     public Loan() {
     }
 
-    public Loan(Reader reader, Date dateBorrow, Date dateReturn) {
+    public Loan(Reader reader, Date dateBorrow, Date dateReturn, boolean isReturned) {
         this.reader = reader;
         this.dateBorrow = dateBorrow;
         this.dateReturn = dateReturn;
+        this.isReturned = isReturned;
+    }
+
+    public boolean isReturned() {
+        return isReturned;
+    }
+
+    public void setReturned(boolean returned) {
+        isReturned = returned;
     }
 
     public int getIdLoan() {

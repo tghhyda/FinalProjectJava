@@ -83,6 +83,7 @@
                             <th>Date Return</th>
                             <th>Book</th>
                             <th>Reader</th>
+                            <th>isReturned</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -98,11 +99,13 @@
                                 <span th:text="${book.nameBook}"></span>
                             </td>
                             <td><span th:text="${loan.reader.nameReader}"></span></td>
+                            <td><span th:text="${loan.returned}"></span></td>
                             <td>
                                 <a data-toggle="modal" th:attr="data-target=${'#viewModal'+loan.idLoan}"><i
                                         class="fa-sharp fa-solid fa-info"></i></a>
                                 <a th:href="@{'/admin/loan/delete/'+ ${loan.idLoan}}"><i
                                         class="fa-solid fa-trash"></i></a>
+                                <a th:href="@{'/admin/loan/return/'+ ${loan.idLoan}}">Return</a>
                             </td>
                         </tr>
                         </tbody>

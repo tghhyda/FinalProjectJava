@@ -16,5 +16,9 @@ public interface LoanRepository extends CrudRepository<Loan, Integer> {
 
     public List<Loan> findAllByReader(Optional<Reader> reader);
 
+    @Query("select l from Loan l where l.reader.nameReader like %?1%" +
+            "or l.reader.idReader like %?1%")
+    public List<Loan> findAllByReader(Optional<Reader> reader, String keyword);
+
     public Long countByIdLoan(int id);
 }

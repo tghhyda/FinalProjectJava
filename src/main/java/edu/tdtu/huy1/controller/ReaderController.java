@@ -105,7 +105,7 @@ public class ReaderController {
 
         ra.addFlashAttribute("message","Saved successfully");
 
-        return "redirect:/admin/reader";
+        return "redirect:/reader/login";
     }
 
     @GetMapping("/admin/reader/delete/{id}")
@@ -120,9 +120,11 @@ public class ReaderController {
     }
 
     @GetMapping("reader/history/{id}")
-    public String viewHistoryPage(Model model, @PathVariable("id") String id){
+    public String viewHistoryPage(Model model, @PathVariable("id") String id,
+                                  @Param("keyword") String keyword){
         Optional<Reader> reader = readerService.findById(id);
-        model.addAttribute("listLoan", loanService.listAllByReader(reader));
+        model.addAttribute("listLoan", loanService.listAllByReader(reader, keyword));
+        model.addAttribute("keyword", keyword);
         return "Reader/ReaderHistory";
     }
 

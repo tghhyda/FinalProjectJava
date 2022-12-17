@@ -16,7 +16,6 @@ public class LoanService {
     LoanRepository loanRepository;
 
     public Loan save(Loan loan){
-
         return loanRepository.save(loan);
     }
 
@@ -34,7 +33,18 @@ public class LoanService {
         loanRepository.deleteById(id);
     }
 
-    public List<Loan> listAllByReader(Optional<Reader> reader){
+    public Loan findById(int id) throws NotFoundException {
+        Optional<Loan> rs = loanRepository.findById(id);
+        if(rs.isPresent()){
+            return rs.get();
+        }
+        throw new NotFoundException("Could not find any loan with id: "+ id);
+    }
+
+    public List<Loan> listAllByReader(Optional<Reader> reader, String keyword){
+        if(keyword != null){
+            return loanRepository.findAllByReader(reader, keyword);
+        }
         return loanRepository.findAllByReader(reader);
     }
 }
